@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c0m46isqb1ag1"]
 
 [ext_resource type="Script" uid="uid://kqbmt81akepe" path="res://scenes/spowners/power_up_spowner.gd" id="1_5jq75"]
-[ext_resource type="PackedScene" uid="uid://cw3yltw6a5si0" path="res://scenes/powe_up/power_up.tscn" id="2_3v17y"]
+[ext_resource type="PackedScene" uid="uid://cw3yltw6a5si0" path="res://scenes/power_up/power_up.tscn" id="2_3v17y"]
 
 [node name="PowerUpSpowner" type="Node2D" unique_id=1669994510]
 script = ExtResource("1_5jq75")

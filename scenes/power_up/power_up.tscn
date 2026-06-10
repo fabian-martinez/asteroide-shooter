@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cw3yltw6a5si0"]
 
 [ext_resource type="Texture2D" uid="uid://dly7pf3nxk0ir" path="res://assets/sprites/powerupYellow_bolt.png" id="1_j3ubd"]
-[ext_resource type="Script" uid="uid://b8po3jfdnp5sm" path="res://scenes/powe_up/power_up.gd" id="1_p45mm"]
+[ext_resource type="Script" uid="uid://b8po3jfdnp5sm" path="res://scenes/power_up/power_up.gd" id="1_p45mm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3ubd"]
 size = Vector2(31, 30)
