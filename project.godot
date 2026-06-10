@@ -15,6 +15,10 @@ run/main_scene="uid://cro8yfmp7b3kg"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*uid://ccenxjs6nx2kv"
+
 [global_group]
 
 Asteroids=""

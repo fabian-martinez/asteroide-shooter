@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cvpa1b6xnbfr8"]
+
+[ext_resource type="Script" uid="uid://bccfxwimidpbb" path="res://scenes/spowners/asteroid_spowner.gd" id="1_ccc6h"]
+[ext_resource type="PackedScene" uid="uid://bu2ygehmbuhi3" path="res://scenes/asteroids/big_asteroid.tscn" id="2_fmp2f"]
+[ext_resource type="PackedScene" uid="uid://dp6o5pytoavr3" path="res://scenes/asteroids/medium_asteroid.tscn" id="3_kbsi1"]
+[ext_resource type="PackedScene" uid="uid://by0a8hq5rvac3" path="res://scenes/asteroids/small_asteroid.tscn" id="4_khv74"]
+
+[node name="AsteroidSpowner" type="Marker2D" unique_id=401931430]
+script = ExtResource("1_ccc6h")
+asteroids = Array[PackedScene]([ExtResource("2_fmp2f"), ExtResource("3_kbsi1"), ExtResource("4_khv74")])
+MIN_Y = 40.0
+MAX_Y = 640.0
+MIN_VELOCITY = 200.0
+MAX_VELOCITY = 400.0
+MIN_ANGULAR_VELOCITY = 10.0
+MAX_ANGULAR_VELOCITY = 180.0
+
+[node name="Timer" type="Timer" parent="." unique_id=388317944]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

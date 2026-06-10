@@ -4,7 +4,11 @@ extends CharacterBody2D
 @export var laser_scene:PackedScene
 @export var speed_shoot:float
 
+
 func _physics_process(delta: float) -> void:
+	
+	if GameManager.is_game_over:
+		return
 	# Ejecuta en un intervalo de 60 por segundo
 	# Fisicas 
 	# Movimientos de cuerpos fisico (CharacterBody2D, RigidBody2D)
@@ -31,4 +35,5 @@ func create_laser():
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	var isAsteroid = area.is_in_group("Asteroids")
 	if(isAsteroid):
+		GameManager.set_is_game_over(true)
 		queue_free()
