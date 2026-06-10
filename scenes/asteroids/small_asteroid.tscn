@@ -8,6 +8,7 @@ radius = 32.140316
 
 [node name="SmallAsteroid" type="Area2D" unique_id=1921336170 groups=["Asteroids"]]
 script = ExtResource("1_kfbcv")
+points = 15
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=658332437]

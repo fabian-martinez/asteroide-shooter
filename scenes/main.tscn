@@ -1,18 +1,22 @@
 [gd_scene format=3 uid="uid://cro8yfmp7b3kg"]
 
 [ext_resource type="Texture2D" uid="uid://bxdi6n5wnbifu" path="res://assets/sprites/background.png" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://bu2ygehmbuhi3" path="res://scenes/asteroids/big_asteroid.tscn" id="2_sugp2"]
-[ext_resource type="PackedScene" uid="uid://dp6o5pytoavr3" path="res://scenes/asteroids/medium_asteroid.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://d2rmqyi2y6uya" path="res://scenes/laser/laser.tscn" id="3_o6xl0"]
-[ext_resource type="Script" uid="uid://bccfxwimidpbb" path="res://scenes/asteroid_spowner.gd" id="3_tefeu"]
-[ext_resource type="PackedScene" uid="uid://by0a8hq5rvac3" path="res://scenes/asteroids/small_asteroid.tscn" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cvpa1b6xnbfr8" path="res://scenes/spowners/asteroid_spowner.tscn" id="4_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://duv3ddwyj3jhg" path="res://scenes/player/player.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cvpie4v14rpkv" path="res://scenes/ui/hud/hud.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://dcxyb2e74n75r" path="res://scenes/ui/game_over/game_over.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://c0m46isqb1ag1" path="res://scenes/spowners/power_up_spowner.tscn" id="9_choun"]
+[ext_resource type="Script" uid="uid://dgq2un85734ua" path="res://scenes/game_over_trigger.gd" id="10_choun"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
 size = Vector2(1168, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
 size = Vector2(20, 664)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ya4ey"]
+size = Vector2(38, 667)
 
 [node name="Main" type="Node2D" unique_id=52950865]
 
@@ -54,22 +58,26 @@ shape = SubResource("RectangleShape2D_tefeu")
 position = Vector2(1171, 322)
 shape = SubResource("RectangleShape2D_tefeu")
 
-[node name="AsteroidSpowner" type="Marker2D" parent="." unique_id=2024675882]
+[node name="AsteroidSpowner" parent="." unique_id=401931430 instance=ExtResource("4_o6xl0")]
 position = Vector2(1251, 318)
-rotation = -0.000616141
-script = ExtResource("3_tefeu")
-asteroids = Array[PackedScene]([ExtResource("2_sugp2"), ExtResource("3_jyhfs"), ExtResource("4_tbgi4")])
-big_asteroid_scene = ExtResource("2_sugp2")
-medium_asteroid_scene = ExtResource("3_jyhfs")
-small_asteroid_scene = ExtResource("4_tbgi4")
-MIN_Y = 60.0
-MAX_Y = 600.0
-MIN_VELOCITY = 300.0
-MAX_VELOCITY = 400.0
-MIN_ANGULAR_VELOCITY = -180.0
-MAX_ANGULAR_VELOCITY = 180.0
+MAX_VELOCITY = 300.0
 
-[node name="Timer" type="Timer" parent="." unique_id=1441704570]
-autostart = true
+[node name="PowerUpSpowner" parent="." unique_id=1669994510 instance=ExtResource("9_choun")]
 
-[connection signal="timeout" from="Timer" to="AsteroidSpowner" method="_on_timer_timeout"]
+[node name="GameOverTrigger" type="Area2D" parent="." unique_id=1444237763]
+position = Vector2(-69, 325)
+script = ExtResource("10_choun")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameOverTrigger" unique_id=300121390]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_ya4ey")
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1331704808]
+
+[node name="HUD" parent="UILayer" unique_id=727676253 instance=ExtResource("8_tipki")]
+metadata/_edit_lock_ = true
+
+[node name="GameOverUI" parent="UILayer" unique_id=1600979781 instance=ExtResource("9_85g3d")]
+
+[connection signal="area_shape_entered" from="GameOverTrigger" to="GameOverTrigger" method="_on_area_shape_entered"]

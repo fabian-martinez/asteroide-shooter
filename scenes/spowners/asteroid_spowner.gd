@@ -1,9 +1,6 @@
 extends Marker2D
 
 @export var asteroids: Array[PackedScene]
-@export var big_asteroid_scene: PackedScene
-@export var medium_asteroid_scene: PackedScene
-@export var small_asteroid_scene: PackedScene
 
 # VARS
 @export var MIN_Y: float
@@ -13,7 +10,12 @@ extends Marker2D
 @export var MIN_ANGULAR_VELOCITY: float
 @export var MAX_ANGULAR_VELOCITY: float
 
+@onready var timer: Timer = $Timer
+
 func create_asteroid():
+	if GameManager.is_game_over:
+		timer.stop()
+		return
 	var asteroid_scene = asteroids.pick_random()
 	var asteroid_instance = asteroid_scene.instantiate()
 	add_child(asteroid_instance)
@@ -34,11 +36,14 @@ func create_asteroid():
 	asteroid_instance.speed_rotation = random_angular_velocity
 	asteroid_instance.speed = random_velocity
 	
+# =====================================================
 #   SIGNAL
 #	 __________                        ____________
 #	|          | ))Senal    ))Conecta |            |
 #	|  Timer   |                      |  Spawner   |
 #	|__________|                      |____________|
 #
+#=====================================================
+
 func _on_timer_timeout() -> void:
 	create_asteroid()
