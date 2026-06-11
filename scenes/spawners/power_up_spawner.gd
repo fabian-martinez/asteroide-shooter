@@ -3,10 +3,13 @@ extends Node2D
 @export var power_up_scene: PackedScene
 @onready var timer = $Timer
 
-var area: Vector2
+var spawn_area: Vector2
 
 func _ready() -> void:
-	area = Vector2(get_viewport().size)
+	spawn_area = Vector2(
+		get_viewport().size.x / 2 , 
+		get_viewport().size.y
+		)
 
 func create_power_up():
 	if GameManager.is_game_over:
@@ -14,10 +17,12 @@ func create_power_up():
 		return
 	var power_up_instance = power_up_scene.instantiate()
 	add_child(power_up_instance)
-	var random_position_x = randf_range(0,area.x / 2)
-	var random_position_y = randf_range(0,area.y)
-	power_up_instance.global_position = Vector2(random_position_x,random_position_y)
-	print(power_up_instance.global_position)
+	var random_position_x = randf_range(0,
+		spawn_area.x)
+	var random_position_y = randf_range(0,
+		spawn_area.y)
+	power_up_instance.global_position = Vector2(
+		random_position_x,random_position_y)
 
 func _on_timer_timeout() -> void:
 	create_power_up()

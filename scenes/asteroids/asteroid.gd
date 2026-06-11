@@ -4,6 +4,7 @@ extends Area2D
 @export var speed: float
 @export var speed_rotation: float
 @export var points: int
+@export var explosion_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,4 +25,7 @@ func _on_area_entered(area: Area2D) -> void:
 		destroy()
 
 func destroy():
+	var explosion_instance = explosion_scene.instantiate()
+	add_sibling(explosion_instance)
+	explosion_instance.position = position
 	queue_free()
