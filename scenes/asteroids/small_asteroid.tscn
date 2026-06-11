@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cc6tk3i7aavu8" path="res://assets/sprites/rock-small.png" id="1_ckhff"]
 [ext_resource type="Script" uid="uid://cv00al65lkmxx" path="res://scenes/asteroids/asteroid.gd" id="1_kfbcv"]
+[ext_resource type="PackedScene" uid="uid://nk6hddjru2y5" path="res://scenes/particles/explosion.tscn" id="2_ooo1b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kfbcv"]
 radius = 32.140316
@@ -9,6 +10,7 @@ radius = 32.140316
 [node name="SmallAsteroid" type="Area2D" unique_id=1921336170 groups=["Asteroids"]]
 script = ExtResource("1_kfbcv")
 points = 15
+explosion_scene = ExtResource("2_ooo1b")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=658332437]

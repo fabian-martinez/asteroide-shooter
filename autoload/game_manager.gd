@@ -4,7 +4,7 @@ var score = 0
 var is_game_over = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_game_over and Input.is_action_just_pressed("shoot"):
 		restart_game()
 
